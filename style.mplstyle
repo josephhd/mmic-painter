@@ -1,0 +1,45 @@
+
+# Note that caption font size is 8pt
+# Abstract text size is 9pt, and text is 10pt
+
+# LINES
+lines.linewidth : 2
+lines.markersize : 8
+
+# FONT
+mathtext.fontset : stix
+font.family : STIXGeneral
+font.size   : 8
+
+# AXES
+axes.labelsize : 10
+axes.titlesize : 10
+axes.grid : True
+axes.grid.axis : both
+axes.grid.which : major
+
+# TICKS
+xtick.labelsize : 8
+xtick.minor.visible : True
+ytick.labelsize : 8
+ytick.minor.visible : True
+
+# GRIDS
+grid.linewidth : 1
+grid.alpha : 0.5
+
+# LEGEND
+legend.frameon : False
+legend.fancybox : False
+legend.fontsize : 8
+legend.handletextpad : 0.5
+legend.handlelength : 1.5
+
+# FIGURE
+# figure.dpi : 300
+# figure.figsize : 10, 2.857
+
+# SAVING FIGURES
+# savefig.dpi : 300
+# savefig.format : png
+savefig.bbox : tight
