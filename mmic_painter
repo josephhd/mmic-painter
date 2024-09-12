@@ -1,0 +1,160 @@
+#!/usr/bin/python3
+
+import argparse
+import matplotlib.pyplot as pyplot
+import matplotlib.patches as mpatches
+from gdspy import *
+import os
+import sys
+
+
+os.chdir(os.path.dirname(sys.argv[0]))
+
+#######################################################################################################
+### Read command line arguments ###
+#######################################################################################################
+parser = argparse.ArgumentParser(
+    prog='mmic-painter', 
+    description='Reads an input GDS file and colorizes the geometry for publication quality figures.')
+
+parser.add_argument(
+    'fin', 
+    help='Input GDS file.')
+
+parser.add_argument(
+    'style',
+    help='Input stylesheet for the GDS file. Usually foundry process specific.')
+
+parser.add_argument(
+    '-o', '--output',
+    action='store',
+    help='Output location for saving figures. File format is inferred from the file name.'
+)
+
+parser.add_argument(
+    '-nl', '--nolegend',
+    action='store_true',
+    help='Disable the figure legend.'
+)
+
+parser.add_argument(
+    '-wi',
+    action='store',
+    default=3.5,
+    help='Figure width (inches). This is also the width of the saved figure which is useful for importing figures in LaTeX.'
+)
+
+parser.add_argument(
+    '-hi',
+    action='store',
+    default=3,
+    help='Figure height (inches). This is also the height of the saved figure which is useful for importing figures in LaTeX.'
+)
+
+parser.add_argument(
+    '-dpi',
+    action='store',
+    default=300,
+    help='The dots per inch used for non-vector format images.'
+)
+
+parser.add_argument(
+    '-s', '--silent',
+    action='store_true',
+    help='Supress output, do not show plot.'
+)
+
+# parser.add_argument(
+#     '-wcm',
+#     action='store',
+#     help='Figure width (cm).'
+# )
+
+# parser.add_argument(
+#     '-hcm',
+#     action='store',
+#     help='Figure height (cm).'
+# )
+
+args = parser.parse_args()
+
+#######################################################################################################
+# if you have a style guide, you can import it here, otherwise comment this line
+pyplot.style.use('style.mplstyle')
+
+# Load a GDSII file into a new library
+file = args.fin
+
+# load the process colorizer library
+f = open(args.style)
+source = f.read()
+exec(source)
+
+# configure figure size (in inches)
+fig, ax = pyplot.subplots(figsize=(float(args.wi), float(args.hi)))
+
+#######################################################################################################
+gds = GdsLibrary(infile=file)
+
+### Print GDS cell information ###
+# for k, v in gds.cells.items():
+    # print("GDS Cell Info:", k, v, "GDS Cell Layers: ", v.get_layers())
+
+#######################################################################################################
+polygon_dict = {}
+
+for k, c in gds.cells.items():   
+    polygons = c.get_polygons(by_spec=True)
+
+    for k, shapes in polygons.items():
+        layer = k[0]
+
+        for s in shapes:
+            if layer in di.color_dict.keys():
+                p = mpatches.Polygon(s, closed=True, facecolor=di.color_dict[layer])
+
+                if layer in polygon_dict.keys():
+                    polygon_dict[layer].append(p)
+                else:
+                    polygon_dict[layer] = [p]
+
+# convert order_dict to a sorted list of tuples, then iterate over the sorted list and draw the polygons in the specified draw order
+polygons = []
+sorted_order = sorted(di.order_dict.items(), key=lambda kv:kv[1])
+
+for k,v in sorted_order:
+    if k in polygon_dict.keys():
+        polygons.extend(polygon_dict[k])
+    else:
+        print("Layer " + str(k) + " not found in dictionary.")
+
+# draw polygons
+for p in polygons:
+    ax.add_patch(p)
+
+# create legend
+legend_handles = []
+for k, v in di.legend_names.items():
+    if k in di.color_dict.keys():
+        legend_handles.append(mpatches.Patch(color=di.color_dict[k], label=v))
+
+bbox = c.get_bounding_box()
+ax.set_xlim([bbox[0, 0], bbox[1, 0]])
+ax.set_ylim([bbox[0, 1], bbox[1, 1]])
+
+#######################################################################################################
+### Figure Styling ###
+#######################################################################################################
+
+if args.nolegend is not True:
+    ax.legend(handles=legend_handles, loc='center left', bbox_to_anchor=(1, 0.5))
+
+ax.set_axis_off()
+ax.axis('equal')
+fig.tight_layout()
+
+if args.output is not None:
+    fig.savefig(args.output, pad_inches=0, dpi=float(args.dpi))
+
+if args.silent is not True:
+    pyplot.show()
