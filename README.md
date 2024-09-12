@@ -3,6 +3,8 @@ MMIC painter is a small Python program for rendering MMIC layouts as publication
 
 While MMIC painter was originally intended for MMIC layouts, it can be used with any layout that is given as a GDS. This includes PCBs, or other mechanical drawings. 
 
+NOTE: When exporting your GDS for plotting, ensure that it's exported as a FLAT GDS file.
+
 ## Prerequisits
 To run this code, the following packages are required:
 
