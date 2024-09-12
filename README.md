@@ -11,7 +11,7 @@ To run this code, the following packages are required:
 * `gdspy`
 
 Before installing `gdspy`, Microsofts Visual Studio C++ compiler tools must be installed. 
-1. Navigate to the download for Microsoft's Visual Studio Build Tools found **[here] (https://visualstudio.microsoft.com/downloads/?q=build+tools)**. Download the build tools installer which is found towards the bottom of the page under `Tools for Visual Studio->Build Tools for Visual Studio 2022`. 
+1. Navigate to the download for Microsoft's Visual Studio Build Tools found **[here](https://visualstudio.microsoft.com/downloads/?q=build+tools)**. Download the build tools installer which is found towards the bottom of the page under `Tools for Visual Studio->Build Tools for Visual Studio 2022`. 
 2. Run the downloaded installer.
 3. Once installed, launch the `Visual Studio Installer` which was installed on your computer. 
 4. Under the installed applications, find `Visual Studio Build Tools 2022` and click on `Modify`. 
@@ -44,10 +44,15 @@ To run mmic-painter from the command line, you can now use the command `mmicpain
 ## Running mmic-painter
 mmic-painter comes with some example files to test installation. The following shows examples of how to execute mmic-painter on these files. The following examples assume that you have setup the path environment variable correctly. 
 ### LNA Example
-`mmicpainter examples/lna.gds processes/WIN_PQG3_0C`
+Change to the installation location of `mmic_painter` and run the following command: `mmicpainter examples/lna.gds processes/WIN_PQG3_0C`. This will show the layout of a 2-channel LNA using default options, with the layers specified in the WIN PQG3-0C process. 
 
-### Differential Pair Example
-`mmicpainter examples/diffpair.gds processes/WIN_PQG3_0C`
+The figure can be saved using the `-o` or `--output` optional argument followed by the file name and extension. The file type will be inferred from the file extension. For example, running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -o lna.png -dpi 600` will save a copy of the figure as a png with a DPI of 600 (note that DPI only affects rasterized image formats) in the current working directory. 
+
+If you don't want to show the figure itself each time `mmicpainter` is run, use the `-s` command which will suppress the figure from being shown. This is useful if you just want to output the figure as is. The command `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -s -o lna.png -dpi 600` will save the fgure as a png, but won't show anything after running the command. 
+
+If you want to specify the figure width and height in inches, use the `-wi` and `-hi` arguments. By default, the figure is 3x3.5 inches. Note that the specified size is used when saving the figure, and is how large the figure will appear in a LaTeX document when imported using `\includgraphics`. This is particualrly helpful for maintaing font size continuity between the main document and the figure. Running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -wi 10 -hi 10` will plot the colorized layout with a width and height of 10 inches. 
+
+The legend can be suppressed using the `-nl` command. Running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -wi 10 -hi 10 -nl` will show the same thing as before, but without the legend. 
 
 ## Adding Process Files
 A custom process file can be added by copying and modifying one of the existing process files found in the `process` directory. 

@@ -7,15 +7,15 @@ from gdspy import *
 import os
 import sys
 
-
-os.chdir(os.path.dirname(sys.argv[0]))
+localdir = sys.argv[0][:-12]
 
 #######################################################################################################
 ### Read command line arguments ###
 #######################################################################################################
 parser = argparse.ArgumentParser(
     prog='mmic-painter', 
-    description='Reads an input GDS file and colorizes the geometry for publication quality figures.')
+    description='Reads an input GDS file and colorizes the geometry for publication quality figures.'
+)
 
 parser.add_argument(
     'fin', 
@@ -80,7 +80,7 @@ args = parser.parse_args()
 
 #######################################################################################################
 # if you have a style guide, you can import it here, otherwise comment this line
-pyplot.style.use('style.mplstyle')
+pyplot.style.use(localdir+'style.mplstyle')
 
 # Load a GDSII file into a new library
 file = args.fin
