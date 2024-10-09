@@ -22,3 +22,5 @@ di.addLayer(302, colormap[5] ,  "Bond Pad" ) # DM_BondPad
 di.addLayer(1,   colormap[7] ,  "Mesa"     ) # mesa
 di.addLayer(31,  colormap[12],  "TOBI"     ) # TOBI
 di.addLayer(7,   colormap[3] ,  "TFR"      ) # TFR
+di.addLayer(14,  colormap[18],  "Grid"     ) # Grid
+di.addLayer(29,  colormap[16],  "Text"     )

@@ -13,7 +13,7 @@ localdir = sys.argv[0][:-12]
 ### Read command line arguments ###
 #######################################################################################################
 parser = argparse.ArgumentParser(
-    prog='mmic-painter', 
+    prog='mmicpainter', 
     description='Reads an input GDS file and colorizes the geometry for publication quality figures.'
 )
 
@@ -64,6 +64,12 @@ parser.add_argument(
     help='Supress output, do not show plot.'
 )
 
+parser.add_argument(
+    '-v', '--verbose',
+    action='store_true',
+    help='Prints debug information. Currently just prints all GDS layer numbers which exist in the file.'
+)
+
 # parser.add_argument(
 #     '-wcm',
 #     action='store',
@@ -97,8 +103,10 @@ fig, ax = pyplot.subplots(figsize=(float(args.wi), float(args.hi)))
 gds = GdsLibrary(infile=file)
 
 ### Print GDS cell information ###
-# for k, v in gds.cells.items():
-    # print("GDS Cell Info:", k, v, "GDS Cell Layers: ", v.get_layers())
+
+if args.verbose is True:
+    for k, v in gds.cells.items():
+        print("GDS Cell Info:", k, v, "GDS Cell Layers: ", v.get_layers())
 
 #######################################################################################################
 polygon_dict = {}
