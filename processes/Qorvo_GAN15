@@ -1,0 +1,22 @@
+import numpy as np
+from matplotlib import cm
+
+from utils import drawInfo
+
+# use matplotlib's built in colormap to define plot colors
+# for color maps: https://matplotlib.org/stable/users/explain/colors/colormaps.html
+
+color_list = np.linspace(0, 1, 20)
+tab20 = [ cm.tab20(x) for x in color_list ]
+colormap = tab20
+
+di = drawInfo()
+
+di.addLayer([4,6,28]  , colormap[14], 'Metal 1' ) # Added M0 and MIM to Metal 1
+di.addLayer([8,18] , colormap[15], 'Metal 2' ) # Added MX2 to Metal 2
+di.addLayer(9 , colormap[6] , 'Back Via')
+di.addLayer(13  , colormap[19], 'TFR')
+# di.addLayer(3  , colormap[2] , 'Ohmic')
+di.addLayer([22,87] , colormap[17], 'Gate')
+di.addLayer(15, colormap[5] , 'Bond Pad')
+di.addLayer(0 ,colormap[18], 'Cap')

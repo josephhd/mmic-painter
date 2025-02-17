@@ -23,7 +23,7 @@ Before installing `gdspy`, Microsofts Visual Studio C++ compiler tools must be i
     * MSVC v143 - VS 2022 C++ x64/x86 build tools
     * Windows 11 SDK
     * C++ CMake tools for Windows
-8. In the bottom right, select `Modify`.
+8. In the bottom right, select `Modify`/`Install`.
 9. Once complete, you can close the application and the correct tools will have been installed. 
 
 After completeing the above install the prerequisite packages using `pip install matplotlib numpy gdspy`. 
@@ -44,7 +44,8 @@ This can be eased by simply adding the directory of `mmic_painter` to the system
 To run mmic-painter from the command line, you can now use the command `mmicpainter`. To see the help, type `mmicpainter -h` .
 
 ## Running mmic-painter
-mmic-painter comes with some example files to test installation. The following shows examples of how to execute mmic-painter on these files. The following examples assume that you have setup the path environment variable correctly. 
+mmic-painter comes with some example files to test installation. The following shows examples of how to execute mmic-painter on these files. The following examples assume that you have setup the path environment variable correctly. If you haven't set up the path environment, then navigate to the main folder in the PowerShell and add `./` as a prefix to all the ensuing commands.
+
 ### LNA Example
 Change to the installation location of `mmic_painter` and run the following command: `mmicpainter examples/lna.gds processes/WIN_PQG3_0C`. This will show the layout of a 2-channel LNA using default options, with the layers specified in the WIN PQG3-0C process. 
 
@@ -56,5 +57,12 @@ If you want to specify the figure width and height in inches, use the `-wi` and 
 
 The legend can be suppressed using the `-nl` command. Running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -wi 10 -hi 10 -nl` will show the same thing as before, but without the legend. 
 
+
 ## Adding Process Files
-A custom process file can be added by copying and modifying one of the existing process files found in the `process` directory. 
+You can add a custom process file by copying and modifying one of the existing process files in the `process` directory. 
+
+Layers are defined using the following code line:
+di.addLayer(`gds layer number`  , `colormap[color code]`, `'Legend Entry'` )
+Multiple layer numbers can be mapped to a single color and legend entry by replacing the layer number with a list of layer numbers ( `[a,b,c]` ).
+
+In AWR, GDS layer numbers can be identified by double-clicking the process lpf file in the layout tab. Navigate to `File Export Mappings` > `MMIC GDSII (GDSII)`. You’ll find a table with drawing layers and layer numbers.

@@ -134,7 +134,7 @@ for k,v in sorted_order:
     if k in polygon_dict.keys():
         polygons.extend(polygon_dict[k])
     else:
-        print("Layer " + str(k) + " not found in dictionary.")
+        print("Layer " + str(k) + " not found in the gds file.")
 
 # draw polygons
 for p in polygons:
