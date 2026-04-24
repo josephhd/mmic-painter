@@ -1,5 +1,3 @@
-[![DOI](https://zenodo.org/badge/1218674272.svg)](https://doi.org/10.5281/zenodo.19723624)
-
 # mmic-painter
 MMIC painter is a small Python program for rendering MMIC layouts as publication-quality figures. It supports reading GDS files and can save figures in vector (SVG, PDF, etc.), as well as rasterized formats (PNG, JPEG, etc.). It is currenty developed by the [Microwave Research Group at the University of Colorado at Boulder](https://www.colorado.edu/faculty/popovic-zoya/).
 
@@ -7,10 +5,11 @@ While MMIC painter was originally intended for MMIC layouts, it can be used with
 
 NOTE: When exporting your GDS for plotting, ensure that it's exported as a FLAT GDS file.
 
-## Citation
+## Citation <a href="https://doi.org/10.5281/zenodo.19723624"><img src="https://zenodo.org/badge/1218674272.svg" alt="DOI"></a>
 mmic-painter can be cited using the DOI above, or you can copy the citation below. 
 
 BibTeX:
+```
 @misc{mmic-painter_2026,
 	title = {josephhd/mmic-painter: mmic-painter initial release},
 	copyright = {GNU General Public License v3.0 only},
@@ -24,6 +23,7 @@ BibTeX:
 	month = apr,
 	year = {2026},
 }
+```
 
 IEEE:
 J. Dunbar, josephhd/mmic-painter: mmic-painter initial release. (Apr. 24, 2026). Zenodo. doi: 10.5281/ZENODO.19723625.
