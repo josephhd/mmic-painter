@@ -12,6 +12,7 @@ colormap = tab20
 
 di = drawInfo()
 
+di.addLayer(1,   colormap[7] ,  "Mesa"     ) # mesa
 di.addLayer(9,   colormap[14],  "Metal 1"  ) # Metal 1
 di.addLayer(11,  colormap[15],  "Metal 2"  ) # Metal 2
 di.addLayer(13,  colormap[6] ,  "Back Via" ) # backvia
@@ -19,7 +20,7 @@ di.addLayer(48,  colormap[18],  "Capacitor") # du_cap
 di.addLayer(304, colormap[5]               ) # DM_DCPAD
 di.addLayer(305, colormap[5]               ) # DM_RFPAD
 di.addLayer(302, colormap[5] ,  "Bond Pad" ) # DM_BondPad
-di.addLayer(1,   colormap[7] ,  "Mesa"     ) # mesa
-di.addLayer(31,  colormap[12],  "TOBI"     ) # TOBI
+di.addLayer(22,  colormap[12],  "OEGate"   ) # OEGate
+di.addLayer([29, 35], colormap[16],"ODGate") # ODGate and ODGate2
 di.addLayer(7,   colormap[3] ,  "TFR"      ) # TFR
 di.addLayer(14,  colormap[19],  "Grid"     ) # Grid
