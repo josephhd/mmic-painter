@@ -54,8 +54,7 @@ To run mmic-painter from the command line, you can now use the command `mmicpain
 ## Running mmic-painter
 mmic-painter comes with some example files to test installation. The following shows examples of how to execute mmic-painter on these files. The following examples assume that you have setup the path environment variable correctly. If you haven't set up the path environment, then navigate to the main folder in the PowerShell and add `./` as a prefix to all the ensuing commands.
 
-### LNA Example
-Change to the installation location of `mmic_painter` and run the following command: `mmicpainter examples/lna.gds processes/WIN_PQG3_0C`. This will show the layout of a 2-channel LNA using default options, with the layers specified in the WIN PQG3-0C process. 
+### Commands and Tips
 
 The figure can be saved using the `-o` or `--output` optional argument followed by the file name and extension. The file type will be inferred from the file extension. For example, running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -o lna.png -dpi 600` will save a copy of the figure as a png with a DPI of 600 (note that DPI only affects rasterized image formats) in the current working directory. 
 
