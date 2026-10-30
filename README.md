@@ -30,27 +30,11 @@ J. Dunbar, josephhd/mmic-painter: mmic-painter initial release. (Apr. 24, 2026).
 
 
 ## Prerequisites
-To run this code, the following packages are required:
+To run this code, the following python packages are required:
 
 * `matplotlib`
 * `numpy`
-* `gdspy`
-
-Before installing `gdspy`, Microsoft Visual Studio C++ compiler tools must be installed. 
-1. Navigate to the download for Microsoft's Visual Studio Build Tools found **[here](https://visualstudio.microsoft.com/downloads/?q=build+tools)**. Download the build tools installer which is found towards the bottom of the page under `Tools for Visual Studio->Build Tools for Visual Studio 2022`. 
-2. Run the downloaded installer.
-3. Once installed, launch the `Visual Studio Installer` which was installed on your computer. 
-4. Under the installed applications, find `Visual Studio Build Tools 2022` and click on `Modify`. 
-5. Find the `Desktop development with C++` icon, and click it so that it is checked and selected.
-6. With the `Desktop development with C++` tools selected, find the `Installation details` on the right side. 
-7. Under the `Optional` drop-down, make sure that only the following are selected (note that versions may differ):
-    * MSVC v143 - VS 2022 C++ x64/x86 build tools
-    * Windows 11 SDK
-    * C++ CMake tools for Windows
-8. In the bottom right, select `Modify`/`Install`.
-9. Once complete, you can close the application and the correct tools will have been installed. 
-
-After completing the above, install the prerequisite packages using `pip install matplotlib numpy gdspy`. 
+* `gdstk`
 
 ## Configuring Windows Path (Optional but recommended)
 MMIC painter can be configured to be executable from a directory by adding the directory of the source file to Window's environment variables. 
