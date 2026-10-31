@@ -8,23 +8,22 @@ mmic-painter can be cited using the DOI above, or you can copy the citation belo
 
 BibTeX:
 ```
-@misc{mmic-painter_2026,
-	title = {josephhd/mmic-painter: mmic-painter initial release},
-	copyright = {GNU General Public License v3.0 only},
+@software{mmic-painter,
+	title = {josephhd/mmic-painter: v1.1},
+	rights = {{MIT} License},
+	url = {https://zenodo.org/doi/10.5281/zenodo.19723624},
+	doi = {10.5281/ZENODO.19723624},
 	shorttitle = {josephhd/mmic-painter},
-	url = {https://zenodo.org/doi/10.5281/zenodo.19723625},
-	doi = {10.5281/ZENODO.19723625},
-	abstract = {Initial release of mmic-painter.},
-	urldate = {2026-04-24},
+	version = {v1.1},
 	publisher = {Zenodo},
 	author = {Dunbar, Joseph},
-	month = apr,
-	year = {2026},
+	urldate = {2026-10-31},
+	date = {2026-10-31},
 }
 ```
 
 IEEE:
-J. Dunbar, josephhd/mmic-painter: mmic-painter initial release. (Apr. 24, 2026). Zenodo. doi: 10.5281/ZENODO.19723625.
+J. Dunbar, josephhd/mmic-painter: v1.1. (Oct. 31, 2026). Zenodo. doi: 10.5281/ZENODO.19723624.
 
 
 ## Prerequisites
