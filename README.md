@@ -3,8 +3,6 @@ MMIC painter is a small Python program for rendering MMIC layouts as publication
 
 While MMIC painter was originally intended for MMIC layouts, it can be used with any layout that is given as a GDS. This includes PCBs or other mechanical drawings. 
 
-NOTE: When exporting your GDS for plotting, ensure that it's exported as a FLAT GDS file.
-
 ## Citation <a href="https://doi.org/10.5281/zenodo.19723624"><img src="https://zenodo.org/badge/1218674272.svg" alt="DOI"></a>
 mmic-painter can be cited using the DOI above, or you can copy the citation below. 
 
@@ -30,27 +28,11 @@ J. Dunbar, josephhd/mmic-painter: mmic-painter initial release. (Apr. 24, 2026).
 
 
 ## Prerequisites
-To run this code, the following packages are required:
+To run this code, the following python packages are required:
 
 * `matplotlib`
 * `numpy`
-* `gdspy`
-
-Before installing `gdspy`, Microsoft Visual Studio C++ compiler tools must be installed. 
-1. Navigate to the download for Microsoft's Visual Studio Build Tools found **[here](https://visualstudio.microsoft.com/downloads/?q=build+tools)**. Download the build tools installer which is found towards the bottom of the page under `Tools for Visual Studio->Build Tools for Visual Studio 2022`. 
-2. Run the downloaded installer.
-3. Once installed, launch the `Visual Studio Installer` which was installed on your computer. 
-4. Under the installed applications, find `Visual Studio Build Tools 2022` and click on `Modify`. 
-5. Find the `Desktop development with C++` icon, and click it so that it is checked and selected.
-6. With the `Desktop development with C++` tools selected, find the `Installation details` on the right side. 
-7. Under the `Optional` drop-down, make sure that only the following are selected (note that versions may differ):
-    * MSVC v143 - VS 2022 C++ x64/x86 build tools
-    * Windows 11 SDK
-    * C++ CMake tools for Windows
-8. In the bottom right, select `Modify`/`Install`.
-9. Once complete, you can close the application and the correct tools will have been installed. 
-
-After completing the above, install the prerequisite packages using `pip install matplotlib numpy gdspy`. 
+* `gdstk`
 
 ## Configuring Windows Path (Optional but recommended)
 MMIC painter can be configured to be executable from a directory by adding the directory of the source file to Window's environment variables. 
@@ -70,8 +52,7 @@ To run mmic-painter from the command line, you can now use the command `mmicpain
 ## Running mmic-painter
 mmic-painter comes with some example files to test installation. The following shows examples of how to execute mmic-painter on these files. The following examples assume that you have setup the path environment variable correctly. If you haven't set up the path environment, then navigate to the main folder in the PowerShell and add `./` as a prefix to all the ensuing commands.
 
-### LNA Example
-Change to the installation location of `mmic_painter` and run the following command: `mmicpainter examples/lna.gds processes/WIN_PQG3_0C`. This will show the layout of a 2-channel LNA using default options, with the layers specified in the WIN PQG3-0C process. 
+### Commands and Tips
 
 The figure can be saved using the `-o` or `--output` optional argument followed by the file name and extension. The file type will be inferred from the file extension. For example, running `mmicpainter examples/lna.gds processes/WIN_PQG3_0C -o lna.png -dpi 600` will save a copy of the figure as a png with a DPI of 600 (note that DPI only affects rasterized image formats) in the current working directory. 
 
